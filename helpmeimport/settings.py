@@ -20,7 +20,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=Csv())
 
-
 def base_dir_join(*args):
     return os.path.join(BASE_DIR, *args)
 
@@ -40,9 +39,6 @@ SECRET_KEY = 'h5q2&w58mt9=+yxf7p&si5_znqnfg8daf8$h*d*lalj-($t*ei'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 TEMPLATE_DEBUG = config('TEMPLATE_DEBUG', default=True, cast=bool)
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 

@@ -29,9 +29,8 @@ for loader, module_name, is_pkg in pkgutil.walk_packages(django.__path__):
     if module:
         if hasattr(module, '__all__'):
             for name in module.__all__:
-                pass
-                # Name.objects.update_or_create(name=name, module_name=module_name,
-                #                               defaults={'is_from_all': True})
+                Name.objects.update_or_create(name=name, module_name=module_name,
+                                              defaults={'is_from_all': True})
 
 
 # second run
