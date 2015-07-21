@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Search</title>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="mdl-layout__content">
+  <div class="mdl-layout mdl-js-layout">
+  <div class="mdl-typography--text-center">
+    <div style="
+  padding-top: 160px;"><h1>Help me import from django</h1>
+  </div>
+    <form action="{% url 'search' %}" method="get">
+        <div class="mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" name="q" id="query_id" autofocus/>
+          <label class="mdl-textfield__label" for="query_id">Search for what you would like to import</label>
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">search</i>
+        </button>
+    </form>
+  </div>
+  </div>
+</div>
+</body>
+</html>

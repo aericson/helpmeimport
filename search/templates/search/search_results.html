@@ -1,0 +1,67 @@
+{% load pygmentify %}
+{% load staticfiles %}
+<html>
+<head>
+  <title>Search</title>
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'pygments.css' %}">
+</head>
+<body>
+  <div class="mdl-layout__content">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row" style="padding-left: 0px;">
+          <!-- Title -->
+          <a href="{% url 'search-form' %}" class="mdl-navigation__link"><span class="mdl-layout-title">Help me import</span></a>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <form action="{% url 'search' %}" method="get" style="margin-bottom: 0em">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+              <label class="mdl-button mdl-js-button mdl-button--icon" for="query_id">
+                <i class="material-icons">search</i>
+              </label>
+              <div class="mdl-textfield__expandable-holder">
+                  <input class="mdl-textfield__input" type="text" name="q" id="query_id"/>
+                  <label class="mdl-textfield__label" for="query_id">Search...</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </header>
+
+      <main class="mdl-layout__content mdl-color--grey-100" style="padding-top: 66px">
+        {% if names %}
+          {% for name in names %}
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" style="width: 90%; margin-bottom: 40px">
+            <div class="mdl-card mdl-cell mdl-cell--12-col" style="min-height: 0px">
+              <div class="mdl-card__supporting-text">
+               {% pygment %}
+                <pre lang="python">from django.{{name.module_name}} import {{name.name}}</pre>
+                {% endpygment %}
+              </div>
+                <div class="mdl-card__menu">
+                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                  <i class="material-icons">content_copy</i>
+                </button>
+              </div>
+            </div>
+          </section>
+          {% endfor %}
+        {% else %}
+          <div class="mdl-typography--text-center">
+            <h2>No results found.</h2>
+          </div>
+        {% endif %}
+      </main>
+
+
+    </div>
+  </div>
+</body>
+</html>
+
+
