@@ -4,6 +4,7 @@ Django==1.8.3
 django-pygments==0.1
 fuzzywuzzy==0.6.0
 gunicorn==19.3.0
+psycopg2==2.6.1
 Pygments==2.0.2
 python-decouple==2.3
 static3==0.6.1
