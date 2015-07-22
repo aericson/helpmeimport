@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
   <div class="mdl-layout__content">
@@ -44,9 +45,12 @@
               <span class="code-highlight-primary">{{name.name}}</span>
             </div>
           </div>
-          <button class="mdl-button mdl-js-button mdl-button--icon copy-btn" id="btn1">
+          <button class="mdl-button mdl-js-button mdl-button--icon copy-btn" data-clipboard-text="from django.{{ name.module_name }} import {{ name.name }}" id="tt{{name.id}}">
             <i class="material-icons">content_copy</i>
           </button>
+          <div class="mdl-tooltip" for="tt{{name.id}}">
+            Copy to clipboard
+          </div>
         </section>
         {% endfor %}
         {% else %}
@@ -59,6 +63,10 @@
 
     </div>
   </div>
+  <script src="{% static 'ZeroClipboard.min.js' %}"></script>
+  <script>
+    var client = new ZeroClipboard( $('.copy-btn') );
+  </script>
 </body>
 </html>
 
